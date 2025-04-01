@@ -6,10 +6,12 @@
     <title>Les Aventuriers du Rail : Édition Die</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
         }
         header {
             background-color: #d32f2f;
@@ -20,17 +22,19 @@
             font-weight: bold;
             position: relative;
             display: flex;
-            justify-content: space-between; /* Pour espacer les éléments */
+            justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         header img {
-            height: 40px; /* Ajuste la hauteur de l'image pour la même taille que le texte */
-            margin-right: 10px; /* Espacement entre l'image et le texte */
+            height: 40px;
+            width: 40px;
+            margin-right: 10px;
         }
         .header-buttons {
             display: flex;
-            gap: 15px; /* Espacement entre les boutons */
+            gap: 15px;
         }
         .header-buttons button {
             background-color: #fff;
@@ -40,7 +44,8 @@
             font-size: 14px;
             cursor: pointer;
             border-radius: 4px;
-            transition: background-color 0.3s, color 0.3s;
+            transition: all 0.3s ease;
+            font-weight: bold;
         }
         .header-buttons button:hover {
             background-color: #d32f2f;
@@ -50,31 +55,42 @@
             max-width: 900px;
             margin: 20px auto;
             background: white;
-            padding: 20px;
+            padding: 30px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
         }
         h1 {
-            font-size: 28px;
-            color: #333;
+            font-size: 32px;
+            color: #d32f2f;
+            margin-bottom: 15px;
+            text-align: center;
+            line-height: 1.3;
         }
         .article-meta {
             color: #777;
             font-size: 14px;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
         }
-        img {
-            width: 100%;
-            height: auto;
-            margin: 20px 0;
+        .section-content {
+            text-align: left;
+            margin-bottom: 30px;
         }
-        p {
-            font-size: 18px;
-            line-height: 1.6;
+        .section-content p {
+            font-size: 16px;
+            line-height: 1.7;
             color: #444;
+            margin-bottom: 20px;
         }
         .section-title {
-            font-size: 22px;
+            font-size: 24px;
             color: #d32f2f;
-            margin-top: 30px;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            text-align: left;
         }
         .footer {
             text-align: center;
@@ -82,38 +98,73 @@
             background-color: #222;
             color: white;
             margin-top: 30px;
-        }
-        .section-content {
-            margin-bottom: 20px;
+            font-size: 14px;
         }
         .image-container {
-            position: relative;
             width: 100%;
-            margin: 20px 0;
+            margin: 30px auto;
             text-align: center;
         }
-        .image-container img {
-            width: 100%;
+        /* Nouvelle classe pour les images réduites */
+        .reduced-image {
+            max-width: 70%; /* Réduction à 70% de la largeur du conteneur */
             height: auto;
-            border: 2px solid #ddd;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            display: block; /* Important pour le centrage */
+            margin: 0 auto; /* Centrage horizontal */
         }
         .image-container .caption {
-            position: absolute;
-            bottom: 10px;
-            left: 0;
-            right: 0;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        strong {
+            color: #333;
+        }
+        .intro {
             font-size: 18px;
-            text-align: center;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 25px;
+        }
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px;
+            }
+            .header-buttons {
+                margin-top: 15px;
+            }
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            /* Images plus larges sur mobile pour meilleure lisibilité */
+            .reduced-image {
+                max-width: 90%;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="img/dice.png" alt="Logo du Mag du Jeu"> 
-        Le Mag du Jeu - Actu Ludique
+        <div style="display: flex; align-items: center;">
+            <img src="img/dice.png" alt="Logo du Mag du Jeu"> 
+            <span>Le Mag du Jeu - Actu Ludique</span>
+        </div>
         <div class="header-buttons">
             <button onclick="alert('Recherche non fonctionnelle')">Recherche</button>
             <button onclick="alert('Connexion non fonctionnelle')">Connexion</button>
@@ -121,19 +172,34 @@
     </header>
     <div class="container">
         <h1>Les Aventuriers du Rail : une édition exclusive dédiée à la ville de Die !</h1>
-        <p class="article-meta">Publié le 1er avril 2025 - Par Jean Jacques </p>
-        <img src="https://via.placeholder.com/800x400" alt="Les Aventuriers du Rail Die">
+        <p class="article-meta">Publié le 1er avril 2025 - Par Jean Jacques</p>
+        
+        <div class="intro">
+            EXCLUSIF - L'éditeur du célèbre jeu de plateau annonce une version spéciale consacrée à la charmante ville de Die en Drôme. Découvrez en avant-première les détails de cette édition qui va faire rougir les passionnés de jeux et de vin pétillant !
+        </div>
+        
+        <div class="image-container">
+            <img src="img/ave34_box3d_20240104.webp" alt="Les Aventuriers du Rail - version Paris" class="reduced-image">
+            <div class="caption">Les Aventuriers du Rail - version Paris (illustration)</div>
+        </div>
         
         <div class="section-content">
-            <p>Dans un tournant inattendu, l'éditeur du célèbre jeu de société <strong> Les Aventuriers du Rail</strong>  annonce une édition spéciale dédiée à la petite ville de Die, en Drôme. Cette nouvelle version proposera un circuit ferroviaire mettant en avant les charmes du Diois, avec ses vignobles et son patrimoine historique.</p>
-            <p>Alan R. Moon, le créateur du jeu, aurait déclaré : "Die est un joyau méconnu qui mérite d'avoir son propre réseau ferroviaire... même si c'est en jeu de plateau !"</p>
-            <p>Les premières images du plateau dévoilent des arrêts stratégiques tels que <strong> La Cave Jaillance</strong> , <strong> La Place de la République</strong>  et <strong> Le Sentier des Vignes</strong> . Les joueurs pourront s'affronter pour obtenir le contrôle de la ligne *Die - Châtillon-en-Diois* et marquer un maximum de points en reliant les sites emblématiques.</p>
+            <p>Dans un tournant inattendu, l'éditeur du célèbre jeu de société <strong>Les Aventuriers du Rail</strong> annonce une édition spéciale dédiée à la petite ville de Die, en Drôme. Cette nouvelle version proposera un circuit ferroviaire mettant en avant les charmes du Diois, avec ses vignobles et son patrimoine historique.</p>
+            
+            <p>Alan R. Moon, le créateur du jeu, aurait déclaré : <em>"Die est un joyau méconnu qui mérite d'avoir son propre réseau ferroviaire... même si c'est qu'un jeu et qu'on s'en fout"</em>. Les premières images du plateau dévoilent des arrêts stratégiques tels que <strong>La Cave Jaillance</strong>, <strong>La Place de la République</strong> et <strong>Le Sentier des Vignes</strong>. Les joueurs pourront s'affronter pour obtenir le contrôle de la ligne <strong>Die - Châtillon-en-Diois</strong> et marquer un maximum de points en reliant les sites emblématiques. Cette édition spéciale introduit des règles inédites et déjantées : contraignez vos adversaires à piocher des cartes au hasard, imposez-leur des gorgées de Clairette pour semer la pagaille, et tentez de relever des défis spéciaux complètement 'loco' en duo !</p>
+
             <p>Cette édition limitée, prévue pour fin 2025, promet déjà de ravir les amateurs de stratégie et de vin pétillant.</p>
+        </div>
+
+        <div class="image-container">
+            <img src="img/die-vue-generale-dlc-31-12-2040-l-pascale-drome-attractivite-1120x0.jpg" alt="Vue satellite de Die" class="reduced-image">
+            <div class="caption">Vue satellite de Die - La future star des jeux de plateau</div>
         </div>
 
         <div class="section-title">Les anciennes éditions des Aventuriers du Rail</div>
         <div class="section-content">
-            <p><strong>Les Aventuriers du Rail</strong>  est une saga qui a captivé des millions de joueurs à travers le monde. Depuis sa première version en 2004, plusieurs éditions ont vu le jour, chacune offrant une nouvelle expérience de jeu unique.</p>
+            <p><strong>Les Aventuriers du Rail</strong> est une saga qui a captivé des millions de joueurs à travers le monde. Depuis sa première version en 2004, plusieurs éditions ont vu le jour, chacune offrant une nouvelle expérience de jeu unique.</p>
+            
             <ul>
                 <li><strong>Les Aventuriers du Rail - USA</strong> (2004) : Le jeu de base, avec un parcours ferroviaire reliant les grandes villes des États-Unis.</li>
                 <li><strong>Les Aventuriers du Rail - Europe</strong> (2005) : Une version européenne où les joueurs relient des villes emblématiques comme Paris, Berlin et Moscou.</li>
@@ -141,15 +207,15 @@
                 <li><strong>Les Aventuriers du Rail - Allemagne</strong> (2015) : Une version plus tactique, avec des règles spéciales pour la gestion des lignes de train allemandes.</li>
                 <li><strong>Les Aventuriers du Rail - France</strong> (2014) : Un retour aux racines, avec des lignes qui traversent les paysages et les villes françaises.</li>
             </ul>
-            <p>Chacune de ces éditions a su ajouter sa propre touche de nouveauté et de stratégie, tout en restant fidèle à l'essence du jeu original. L'édition *Die* s'inscrit dans cette lignée, mais avec une dimension locale et unique qui en fait une version particulièrement attendue par les fans de la région.</p>
-        </div>
-
-        <!-- Ajout de l'encart avec l'image -->
-        <div class="image-container">
-            <img src="img/die-vue-generale-dlc-31-12-2040-l-pascale-drome-attractivite-1120x0.jpg" alt="Vue satellite de Die">
-            <div class="caption">Vue satellite de Die</div>
+            
+            <p>Chacune de ces éditions a su ajouter sa propre touche de nouveauté et de stratégie, tout en restant fidèle à l'essence du jeu original. L'édition <em>Die</em> s'inscrit dans cette lignée, mais avec une dimension locale et unique qui en fait une version particulièrement attendue par les fans de la région.</p>
+            
+            <p>Les précommandes devraient ouvrir d'ici quelques semaines. Une chose est sûre : cette édition va faire parler d'elle, au moins jusqu'au disco patio...</p>
         </div>
     </div>
-    <div class="footer">© 2025 Le Mag du Jeu - Tout est sérieux, sauf le plaisir de jouer !</div>
+    <div class="footer">
+        © 2025 Le Mag du Jeu - Tout est sérieux, sauf le plaisir de jouer !<br>
+        <small>PS : Joyeux 1er avril </small>
+    </div>
 </body>
 </html>
